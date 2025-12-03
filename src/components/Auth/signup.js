@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import { api } from '../../api';
 import Navegador from '../Layout/navegador';
 import Footer from '../Layout/footer';
 
@@ -30,27 +30,17 @@ function Signup() {
     }
 
     try {
-      console.log('📤 Enviando dados:', { username, email, password: '***' });
-
-      const response = await axios.post('http://localhost:8000/api/signup/', {
+      const response = await api.signup({
         username: username,
         email: email,
         password: password,
         password2: password2
-      }, {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json'
-        }
       });
 
-      console.log('✅ Conta criada:', response.data);
       alert(response.data.message || 'Conta criada com sucesso!');
-      navigate('/');
-      window.location.reload();
+      navigate('/login');
 
     } catch (error) {
-      console.error('❌ Erro:', error.response?.data);
 
       if (error.response?.data) {
         const errors = error.response.data;

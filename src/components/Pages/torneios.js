@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navegador from "../Layout/navegador";
 import Footer from "../Layout/footer";
-import axios from "axios";
+import { api } from "../../api";
 
 function Torneios() {
   const [torneios, setTorneios] = useState([]);
@@ -14,22 +14,28 @@ function Torneios() {
   const [telefone, setTelefone] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:8000/api/torneios/", { withCredentials: true })
-      .then(response => setTorneios(response.data))
-      .catch(error => console.log(error));
+    const carregarTorneios = async () => {
+      try {
+        const response = await api.getTorneios();
+        setTorneios(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    carregarTorneios();
   }, []);
 
   const handleInscricao = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/api/inscricoes-torneio/", {
+      const response = await api.createInscricao({
         torneio: selectedTorneio.id,
         nome_equipa: nomeEquipa,
         jogador1,
         jogador2,
         email,
         telefone
-      }, { withCredentials: true });
+      });
 
       const mensagem = response.data.message || "Inscrição realizada com sucesso!";
       alert(mensagem);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navegador from "../Layout/navegador";
 import Footer from "../Layout/footer";
-import axios from "axios";
+import { api } from "../../api";
 
 function Reservas() {
   const [data, setData] = useState("");
@@ -48,9 +48,7 @@ function Reservas() {
 
   const carregarReservas = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/reservas/", {
-        withCredentials: true
-      });
+      const response = await api.getReservas();
       const reservasFiltradas = response.data.filter(r => r.data === data);
       setReservasExistentes(reservasFiltradas);
     } catch (err) {
@@ -133,12 +131,12 @@ function Reservas() {
     }
 
     try {
-      const response = await axios.post("http://localhost:8000/api/reservas/", {
+      const response = await api.createReserva({
         data,
         hora,
         campo: parseInt(campo),
         duracao: parseInt(duracao)
-      }, { withCredentials: true });
+      });
 
       alert(response.data.message || "Reserva criada com sucesso!");
 
