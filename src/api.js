@@ -18,6 +18,9 @@ const axiosInstance = axios.create({
 });
 
 // Add request interceptor for CSRF token handling
+// Note: This automatically reads the CSRF token from the cookie set by Django.
+// Alternatively, you can call api.getCsrfToken() explicitly to fetch the token
+// from the /csrf-token/ endpoint as documented in API_DOCUMENTATION.md
 axiosInstance.interceptors.request.use(
   (config) => {
     // Get CSRF token from cookie if it exists
@@ -56,10 +59,13 @@ axiosInstance.interceptors.response.use(
 );
 
 const api = {
+  // CSRF Token
+  getCsrfToken: () => axiosInstance.get('/csrf-token/'),
+
   // Autenticação
   signup: (data) => axiosInstance.post('/signup/', data),
   login: (data) => axiosInstance.post('/login/', data),
-  logout: () => axiosInstance.get('/logout/'),
+  logout: () => axiosInstance.post('/logout/'),
   getUser: () => axiosInstance.get('/user/'),
 
   // Reservas
@@ -87,11 +93,6 @@ const api = {
   getPedidosTreino: () => axiosInstance.get('/pedidos-treino/'),
   createPedidoTreino: (data) => axiosInstance.post('/pedidos-treino/', data),
   getPacotesTreino: () => axiosInstance.get('/pacotes-treino/'),
-
-  // Upload
-  uploadProfilePicture: (formData) => axiosInstance.post('/upload-profile-picture/', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' }
-  }),
 };
 
 // Export api methods, base URL for media files, and full API URL
