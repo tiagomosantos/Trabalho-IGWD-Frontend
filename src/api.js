@@ -1,47 +1,98 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8000/api";
+// Get API URL from environment variables with fallback
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+const API_URL = `${API_BASE_URL}/api`;
 
-// Configurar axios para sempre enviar cookies
-axios.defaults.withCredentials = true;
+// Get timeout from environment variables with fallback (30 seconds)
+const API_TIMEOUT = parseInt(process.env.REACT_APP_API_TIMEOUT) || 30000;
+
+// Create axios instance with default configuration
+const axiosInstance = axios.create({
+  baseURL: API_URL,
+  timeout: API_TIMEOUT,
+  withCredentials: true, // Always send cookies for authentication
+  headers: {
+    'Content-Type': 'application/json',
+  }
+});
+
+// Add request interceptor for CSRF token handling
+axiosInstance.interceptors.request.use(
+  (config) => {
+    // Get CSRF token from cookie if it exists
+    const csrfToken = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('csrftoken='))
+      ?.split('=')[1];
+
+    if (csrfToken) {
+      config.headers['X-CSRFToken'] = csrfToken;
+    }
+
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Add response interceptor for better error handling
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // Handle timeout errors
+    if (error.code === 'ECONNABORTED') {
+      console.error('Request timeout - please check your connection');
+    }
+
+    // Handle network errors
+    if (!error.response) {
+      console.error('Network error - please check your connection');
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 const api = {
   // Autenticação
-  signup: (data) => axios.post(`${API_URL}/signup/`, data),
-  login: (data) => axios.post(`${API_URL}/login/`, data),
-  logout: () => axios.get(`${API_URL}/logout/`),
-  getUser: () => axios.get(`${API_URL}/user/`),
+  signup: (data) => axiosInstance.post('/signup/', data),
+  login: (data) => axiosInstance.post('/login/', data),
+  logout: () => axiosInstance.get('/logout/'),
+  getUser: () => axiosInstance.get('/user/'),
 
   // Reservas
-  getReservas: () => axios.get(`${API_URL}/reservas/`),
-  createReserva: (data) => axios.post(`${API_URL}/reservas/`, data),
-  checkDisponibilidade: (params) => axios.get(`${API_URL}/check-disponibilidade/`, { params }),
+  getReservas: () => axiosInstance.get('/reservas/'),
+  createReserva: (data) => axiosInstance.post('/reservas/', data),
+  checkDisponibilidade: (params) => axiosInstance.get('/check-disponibilidade/', { params }),
 
   // Sócios
-  getSocios: () => axios.get(`${API_URL}/socios/`),
-  createSocio: (data) => axios.post(`${API_URL}/socios/`, data),
+  getSocios: () => axiosInstance.get('/socios/'),
+  createSocio: (data) => axiosInstance.post('/socios/', data),
 
   // Loja
-  getArtigos: () => axios.get(`${API_URL}/artigos/`),
-  createAvaliacao: (data) => axios.post(`${API_URL}/avaliacao/`, data),
+  getArtigos: () => axiosInstance.get('/artigos/'),
+  createAvaliacao: (data) => axiosInstance.post('/avaliacao/', data),
 
   // Torneios
-  getTorneios: () => axios.get(`${API_URL}/torneios/`),
-  getInscricoes: (torneioId) => axios.get(`${API_URL}/inscricoes-torneio/`, {
+  getTorneios: () => axiosInstance.get('/torneios/'),
+  getInscricoes: (torneioId) => axiosInstance.get('/inscricoes-torneio/', {
     params: torneioId ? { torneio_id: torneioId } : {}
   }),
-  createInscricao: (data) => axios.post(`${API_URL}/inscricoes-torneio/`, data),
+  createInscricao: (data) => axiosInstance.post('/inscricoes-torneio/', data),
 
   // Treinos
-  getTreinadores: () => axios.get(`${API_URL}/treinadores/`),
-  getPedidosTreino: () => axios.get(`${API_URL}/pedidos-treino/`),
-  createPedidoTreino: (data) => axios.post(`${API_URL}/pedidos-treino/`, data),
-  getPacotesTreino: () => axios.get(`${API_URL}/pacotes-treino/`),
+  getTreinadores: () => axiosInstance.get('/treinadores/'),
+  getPedidosTreino: () => axiosInstance.get('/pedidos-treino/'),
+  createPedidoTreino: (data) => axiosInstance.post('/pedidos-treino/', data),
+  getPacotesTreino: () => axiosInstance.get('/pacotes-treino/'),
 
   // Upload
-  uploadProfilePicture: (formData) => axios.post(`${API_URL}/upload-profile-picture/`, formData, {
+  uploadProfilePicture: (formData) => axiosInstance.post('/upload-profile-picture/', formData, {
     headers: { 'Content-Type': 'multipart/form-data' }
   }),
 };
 
-export { api, API_URL };
+// Export api methods, base URL for media files, and full API URL
+export { api, API_BASE_URL, API_URL };

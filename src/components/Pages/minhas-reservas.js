@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navegador from "../Layout/navegador";
 import Footer from "../Layout/footer";
-import axios from "axios";
+import { api } from "../../api";
 
 function MinhasReservas() {
   const [reservas, setReservas] = useState([]);
@@ -15,9 +15,7 @@ function MinhasReservas() {
 
   const carregarReservas = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/reservas/", {
-        withCredentials: true
-      });
+      const response = await api.getReservas();
       setReservas(response.data);
       setLoading(false);
     } catch (err) {

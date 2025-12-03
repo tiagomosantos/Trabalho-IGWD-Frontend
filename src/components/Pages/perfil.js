@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navegador from "../Layout/navegador";
 import Footer from "../Layout/footer";
-import { api } from "../../api";
-import axios from "axios";
+import { api, API_BASE_URL } from "../../api";
 
 function Perfil() {
   const [user, setUser] = useState(null);
@@ -22,9 +21,7 @@ function Perfil() {
 
       // Verificar se é sócio
       try {
-        const sociosResponse = await axios.get("http://localhost:8000/api/socios/", {
-          withCredentials: true
-        });
+        const sociosResponse = await api.getSocios();
         const socioUser = sociosResponse.data.find(s => s.user === userResponse.data.id);
         if (socioUser) {
           setSocio(socioUser);
@@ -89,7 +86,7 @@ function Perfil() {
             <div className="perfil-info">
               {user?.profile_pic && (
                 <img
-                  src={`http://localhost:8000${user.profile_pic}`}
+                  src={`${API_BASE_URL}${user.profile_pic}`}
                   alt={user.username}
                   className="perfil-avatar"
                 />

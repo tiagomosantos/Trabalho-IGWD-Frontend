@@ -14,6 +14,7 @@ import Instalacoes from './components/Pages/instalacoes';
 import Contactos from './components/Pages/contactos';
 import Loja from './components/Pages/loja';
 import Reservas from './components/Pages/reservas';
+import MinhasReservas from './components/Pages/minhas-reservas';
 import FormSocio from './components/Pages/formsocio';
 import Torneios from './components/Pages/torneios';
 import Treinos from './components/Pages/treinos';
@@ -35,6 +36,7 @@ root.render(
           <Route path="/contactos" element={<Contactos />} />
           <Route path="/loja" element={<Loja />} />
           <Route path="/reservas" element={<Reservas />} />
+          <Route path="/minhas-reservas" element={<MinhasReservas />} />
           <Route path="/tornar-me-socio" element={<FormSocio />} />
           <Route path="/torneios" element={<Torneios />} />
           <Route path="/treinos" element={<Treinos />} />

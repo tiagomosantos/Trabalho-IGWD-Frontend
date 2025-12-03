@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navegador from "../Layout/navegador";
 import Footer from "../Layout/footer";
-import axios from "axios";
+import { api } from "../../api";
 
 function FormSocio() {
   const [nome, setNome] = useState("");
@@ -20,14 +20,10 @@ function FormSocio() {
 
   const verificarSocio = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/socios/", {
-        withCredentials: true,
-      });
+      const response = await api.getSocios();
 
       // Verificar se o user atual já é sócio
-      const userResponse = await axios.get("http://localhost:8000/api/user/", {
-        withCredentials: true,
-      });
+      const userResponse = await api.getUser();
 
       const socioExistente = response.data.find(
         (s) => s.user === userResponse.data.id
@@ -51,18 +47,14 @@ function FormSocio() {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/socios/",
-        {
-          nome_completo: nome,
-          email,
-          telefone,
-          morada,
-          data_nascimento: dataNascimento,
-          tipo_socio: tipoSocio,
-        },
-        { withCredentials: true }
-      );
+      const response = await api.createSocio({
+        nome_completo: nome,
+        email,
+        telefone,
+        morada,
+        data_nascimento: dataNascimento,
+        tipo_socio: tipoSocio,
+      });
 
       const mensagem = response.data.message || "Sócio criado com sucesso!";
       alert(mensagem);

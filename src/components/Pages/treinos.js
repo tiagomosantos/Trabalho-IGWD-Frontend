@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navegador from "../Layout/navegador";
 import Footer from "../Layout/footer";
-import axios from "axios";
+import { api } from "../../api";
 
 function Treinos() {
   const [treinadores, setTreinadores] = useState([]);
@@ -15,15 +15,21 @@ function Treinos() {
   const [disponibilidade, setDisponibilidade] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:8000/api/treinadores/", { withCredentials: true })
-      .then(response => setTreinadores(response.data))
-      .catch(error => console.log(error));
+    const carregarTreinadores = async () => {
+      try {
+        const response = await api.getTreinadores();
+        setTreinadores(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    carregarTreinadores();
   }, []);
 
   const handlePedido = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/api/pedidos-treino/", {
+      const response = await api.createPedidoTreino({
         nome,
         email,
         telefone,
@@ -31,7 +37,7 @@ function Treinos() {
         treinador: selectedTreinador.id,
         objetivo,
         disponibilidade
-      }, { withCredentials: true });
+      });
 
       const mensagem = response.data.message || "Pedido de treino enviado com sucesso!";
       alert(mensagem);

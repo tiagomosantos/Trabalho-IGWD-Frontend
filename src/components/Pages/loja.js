@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navegador from "../Layout/navegador";
 import Footer from "../Layout/footer";
-import { api } from "../../api";
+import { api, API_BASE_URL } from "../../api";
 
 function Loja() {
   const [artigos, setArtigos] = useState([]);
@@ -140,7 +140,7 @@ function Loja() {
                           <div className="comentario-header">
                             {av.user_profile_pic && (
                               <img
-                                src={`http://localhost:8000${av.user_profile_pic}`}
+                                src={`${API_BASE_URL}${av.user_profile_pic}`}
                                 alt={av.username}
                                 className="comentario-avatar"
                               />
