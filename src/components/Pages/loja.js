@@ -120,7 +120,7 @@ function Loja() {
           <div className="artigos-grid">
             {artigos.map((artigo) => (
               <div key={artigo.id} className="artigo-card">
-                <img src={artigo.imagem} alt={artigo.nome} />
+                <img src={`${API_BASE_URL}${artigo.imagem}`} alt={artigo.nome} />
                 <h3>{artigo.nome}</h3>
                 <p className="preco">{parseFloat(artigo.preco).toFixed(2)}€</p>
                 <div className="avaliacao">

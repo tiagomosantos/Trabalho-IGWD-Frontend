@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navegador from "../Layout/navegador";
 import Footer from "../Layout/footer";
-import { api } from "../../api";
+import { api, API_BASE_URL } from "../../api";
 
 function Treinos() {
   const [treinadores, setTreinadores] = useState([]);
@@ -110,7 +110,7 @@ function Treinos() {
                 <div key={treinador.id} className="treinador-card">
                   {treinador.foto && (
                     <img
-                      src={treinador.foto}
+                      src={`${API_BASE_URL}${treinador.foto}`}
                       alt={treinador.nome}
                       className="treinador-foto"
                     />
