@@ -1,0 +1,1176 @@
+/*Style Geral*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: #2c3e50;
+  background-color: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+
+/*Style Navegador*/
+.navegador {
+  background: linear-gradient(135deg, #1a472a 0%, #0d2817 100%);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+  height: 80px;
+  gap: 3rem;
+}
+
+.nav-logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-logo:hover {
+  color: #90ee90;
+  transform: translateY(-2px);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  display: block;
+}
+
+.nav-menu li a:hover {
+  background-color: rgba(144, 238, 144, 0.12);
+  color: #90ee90;
+}
+
+@media (max-width: 1100px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    height: auto;
+  }
+
+  .nav-logo {
+    font-size: 1.4rem;
+  }
+
+  .nav-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+
+  .nav-menu li a {
+    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+  }
+}
+
+
+/*Style Head*/
+.head {
+  height: 500px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url("https://static.vecteezy.com/system/resources/thumbnails/069/207/678/small_2x/a-blurry-padel-ball-in-the-foreground-of-a-court-concept-the-use-of-depth-of-field-in-sport-photo.jpg") center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.head-overlay h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  letter-spacing: -0.5px;
+}
+
+.head-overlay p {
+  font-size: 1.4rem;
+  font-weight: 300;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+  .head {
+    height: 350px;
+  }
+
+  .head-overlay h1 {
+    font-size: 2.2rem;
+  }
+
+  .head-overlay p {
+    font-size: 1.1rem;
+  }
+}
+
+
+/*Style História*/
+.historia {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #f8fdf8 0%, #ffffff 100%);
+}
+
+.historia .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  text-align: center;
+}
+
+.historia h2 {
+  font-size: 3rem;
+  color: #1a472a;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.historia-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 3rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.historia-subtitle strong {
+  color: #1a472a;
+  font-weight: 600;
+}
+
+.historia-divider {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #1a472a, #2a9d3f);
+  margin: 0 auto 3rem;
+  border-radius: 2px;
+}
+
+.historia-text {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.9;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.historia-text strong {
+  font-weight: 600;
+  color: #1a472a;
+}
+
+@media (max-width: 768px) {
+  .historia {
+    padding: 4rem 0;
+  }
+
+  .historia .container {
+    padding: 0 2rem;
+  }
+
+  .historia h2 {
+    font-size: 2.2rem;
+  }
+
+  .historia-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .historia-text {
+    font-size: 1rem;
+  }
+}
+
+
+/*Style Instalações*/
+.instalacoes {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #ffffff 0%, #f5f9f5 100%);
+}
+
+.instalacoes .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.instalacoes h2 {
+  font-size: 2.8rem;
+  color: #1a472a;
+  margin-bottom: 3.5rem;
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.instalacoes h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #1a472a, #2a9d3f);
+  border-radius: 2px;
+}
+
+.instalacoes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.instalacao-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-left: 4px solid #2a9d3f;
+}
+
+.instalacao-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(26, 71, 42, 0.15);
+}
+
+.instalacao-card h3 {
+  font-size: 1.5rem;
+  color: #1a472a;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.instalacao-card p {
+  color: #666;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .instalacoes {
+    padding: 4rem 0;
+  }
+
+  .instalacoes h2 {
+    font-size: 2.2rem;
+  }
+
+  .instalacoes-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .instalacao-card {
+    padding: 2rem;
+  }
+}
+
+
+/*Style Contactos*/
+.contactos {
+  padding: 5rem 0;
+  background-color: #f8f9fa;
+}
+
+.contactos .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.contactos h2 {
+  font-size: 2.5rem;
+  color: #1a472a;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.contactos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.contacto-item {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.contacto-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+}
+
+.contacto-item h3 {
+  font-size: 1.3rem;
+  color: #1a472a;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.contacto-item p {
+  color: #666;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .contactos {
+    padding: 3rem 0;
+  }
+
+  .contactos h2 {
+    font-size: 2rem;
+  }
+
+  .contactos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/*Style Footer*/
+.footer {
+  background-color: #1a472a;
+  color: white;
+  padding: 2.5rem 0;
+  margin-top: auto;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-social a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.footer-social a:hover {
+  color: #90ee90;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .footer .container {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+}
+
+
+/*Style Formulários*/
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #1a472a;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.1);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #1a472a 0%, #2a5a3a 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(26, 71, 42, 0.2);
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26, 71, 42, 0.3);
+  background: linear-gradient(135deg, #2a5a3a 0%, #1a472a 100%);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+
+/*Style Formulário Sócio*/
+.form-socio-page {
+  min-height: 80vh;
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #f8fdf8 0%, #ffffff 100%);
+}
+
+.form-socio-page .container {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.form-socio-page h1 {
+  font-size: 2.5rem;
+  color: #1a472a;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.form-intro {
+  text-align: center;
+  color: #666;
+  margin-bottom: 3rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.form-socio {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .form-socio-page {
+    padding: 3rem 0;
+  }
+
+  .form-socio {
+    padding: 2rem 1.5rem;
+  }
+
+  .form-socio-page h1 {
+    font-size: 2rem;
+  }
+}
+
+
+/*Style Loja*/
+.loja-page {
+  min-height: 80vh;
+  padding: 5rem 0;
+  background-color: #f8f9fa;
+}
+
+.loja-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.loja-page h1 {
+  font-size: 2.5rem;
+  color: #1a472a;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.loja-intro {
+  text-align: center;
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+.loja-aviso {
+  background: linear-gradient(135deg, #1a472a 0%, #2a9d3f 100%);
+  color: white;
+  padding: 1.8rem 2.5rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 15px rgba(26, 71, 42, 0.25);
+}
+
+.loja-aviso p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.loja-aviso strong {
+  font-weight: 700;
+}
+
+.artigos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.artigo-card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.artigo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.artigo-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.artigo-card h3 {
+  padding: 1.2rem 1.5rem 0.5rem;
+  color: #2c3e50;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.preco {
+  padding: 0 1.5rem;
+  color: #1a472a;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.avaliacao {
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.estrela-cheia {
+  color: #ffd700;
+}
+
+.estrela-vazia {
+  color: #e0e0e0;
+}
+
+.avaliacao-numero {
+  color: #999;
+  font-size: 0.9rem;
+  margin-left: 0.3rem;
+}
+
+.comentarios-section {
+  padding: 1rem 1.5rem 1.5rem;
+  border-top: 1px solid #f0f0f0;
+  margin-top: auto;
+}
+
+.comentarios-section h4 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.comentarios-lista {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.comentario {
+  background-color: #f8f9fa;
+  padding: 0.85rem;
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+}
+
+.comentario p {
+  margin: 0 0 0.4rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.comentario-data {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.sem-comentarios {
+  color: #999;
+  font-style: italic;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.adicionar-comentario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.adicionar-comentario textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  resize: vertical;
+  min-height: 70px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.adicionar-comentario textarea:focus {
+  outline: none;
+  border-color: #1a472a;
+  box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.1);
+}
+
+.adicionar-comentario button {
+  padding: 0.7rem;
+  background: linear-gradient(135deg, #1a472a 0%, #2a5a3a 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.adicionar-comentario button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 71, 42, 0.3);
+}
+
+@media (max-width: 768px) {
+  .loja-page {
+    padding: 3rem 0;
+  }
+
+  .artigos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .loja-aviso {
+    padding: 1.5rem;
+  }
+
+  .loja-aviso p {
+    font-size: 1rem;
+  }
+}
+
+
+/*Style Reserva Campos*/
+.reservas-page {
+  min-height: 80vh;
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #f8fdf8 0%, #ffffff 100%);
+}
+
+.reservas-page .container {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.reservas-page h1 {
+  font-size: 2.5rem;
+  color: #1a472a;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.reservas-intro {
+  text-align: center;
+  color: #666;
+  margin-bottom: 3rem;
+  font-size: 1.05rem;
+}
+
+.form-reserva {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  margin-bottom: 3rem;
+}
+
+.info-reservas {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.info-reservas h3 {
+  color: #1a472a;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.info-reservas ul {
+  list-style: none;
+  padding: 0;
+}
+
+.info-reservas li {
+  padding: 0.7rem 0;
+  color: #666;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.info-reservas li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #2a9d3f;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .reservas-page {
+    padding: 3rem 0;
+  }
+
+  .form-reserva {
+    padding: 2rem 1.5rem;
+  }
+
+  .reservas-page h1 {
+    font-size: 2rem;
+  }
+}
+
+
+/*Style Torneios*/
+.torneios-page {
+  min-height: 80vh;
+  padding: 5rem 0;
+  background-color: #f8f9fa;
+}
+
+.torneios-page .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.torneios-page h1 {
+  font-size: 2.5rem;
+  color: #1a472a;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.torneios-intro {
+  text-align: center;
+  color: #666;
+  margin-bottom: 3rem;
+  font-size: 1.05rem;
+}
+
+.torneios-lista {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.torneio-card {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.torneio-card:hover {
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+}
+
+.torneio-card h3 {
+  color: #1a472a;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.torneio-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin: 1.2rem 0;
+}
+
+.torneio-info p {
+  color: #666;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.torneio-info strong {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.abertas {
+  color: #2a9d3f;
+  font-weight: 700;
+}
+
+.fechadas {
+  color: #999;
+  font-weight: 600;
+}
+
+.torneio-descricao {
+  margin-top: 1.2rem;
+  color: #666;
+  line-height: 1.7;
+}
+
+.inscricao-section {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+}
+
+.inscricao-section h2 {
+  color: #1a472a;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.form-inscricao {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .torneios-page {
+    padding: 3rem 0;
+  }
+
+  .torneio-info {
+    grid-template-columns: 1fr;
+  }
+
+  .inscricao-section {
+    padding: 2rem 1.5rem;
+  }
+
+  .torneios-page h1 {
+    font-size: 2rem;
+  }
+}
+
+
+/*Style Treinos Personalizados*/
+.treinos-page {
+  min-height: 80vh;
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #f8fdf8 0%, #ffffff 100%);
+}
+
+.treinos-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.treinos-page h1 {
+  font-size: 2.5rem;
+  color: #1a472a;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.treinos-intro {
+  text-align: center;
+  color: #666;
+  margin-bottom: 3rem;
+  font-size: 1.05rem;
+}
+
+.pacotes-section,
+.treinadores-section,
+.pedido-section {
+  margin-bottom: 4rem;
+}
+
+.pacotes-section h2,
+.treinadores-section h2,
+.pedido-section h2 {
+  color: #1a472a;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.pacotes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.pacote-card {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.pacote-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.pacote-card.destaque {
+  border: 3px solid #1a472a;
+  position: relative;
+}
+
+.pacote-card.destaque::before {
+  content: 'RECOMENDADO';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #1a472a, #2a9d3f);
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.pacote-card h3 {
+  color: #1a472a;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.pacote-card .preco {
+  font-size: 2.2rem;
+  color: #1a472a;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.pacote-card ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.pacote-card li {
+  padding: 0.6rem 0;
+  color: #666;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.pacote-card li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #2a9d3f;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.treinadores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.treinador-card {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.treinador-card:hover {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+}
+
+.treinador-card h3 {
+  color: #1a472a;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.treinador-card .especialidade {
+  color: #2a9d3f;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.treinador-card p {
+  color: #666;
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.treinador-card .descricao {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #777;
+}
+
+.pedido-section {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-pedido {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .treinos-page {
+    padding: 3rem 0;
+  }
+
+  .pacotes-grid,
+  .treinadores-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pacote-card.destaque {
+    transform: none;
+  }
+
+  .pedido-section {
+    padding: 2rem 1.5rem;
+  }
+
+  .treinos-page h1 {
+    font-size: 2rem;
+  }
+}
